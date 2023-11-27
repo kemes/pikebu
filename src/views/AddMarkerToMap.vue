@@ -23,7 +23,7 @@
             <form @submit.prevent="addNewRestaurant()">
 
                 <label class="px-2 py-2" for="coord">Koordinaatit </label><br />
-                <input type="text" v-model="coord" id="coord" placeholder="Ei asetettu"/><br />
+                <input type="text" v-model="coord" id="coord" placeholder="Ei asetettu" /><br />
 
                 <label class="px-2 py-2" for="name">Nimi </label><br />
                 <input type="text" v-model="name" placeholder="Ravintolan nimi" /><br />
@@ -81,11 +81,7 @@ function addNewRestaurant() {
 }
 
 function addMarker(event){
-    console.log(event.latlng.lat + ' ' + event.latlng.lng);
-    coord = event.latlng.lat + ' ' + event.latlng.lng;
-    name = 'Temp';
-    
-
+    coord.value = event.latlng.lat + ' ' + event.latlng.lng;
 }
 
 
