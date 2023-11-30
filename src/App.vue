@@ -24,8 +24,32 @@ const markers = [
     {
         id: 2,
         loc: [60.24289554387395, 24.978044629096985],
-        name: 'Mc Donalds - Tikkurila',
+        name: 'McDonalds - Tikkurila',
         type: ['burger']
+    },
+    {
+        id: 3,
+        loc: [60.29051467504654, 24.868289356403967],
+        name: 'Limos',
+        type: ['pizza']
+    },
+    {
+        id: 4,
+        loc: [60.268650863023844, 24.85219703914003],
+        name: `Alby's`,
+        type: ['pizza']
+    },
+    {
+        id: 4,
+        loc: [60.1955996, 24.765506],
+        name: `The Chili's`,
+        type: ['pizza','kebab','burger']
+    },
+    {
+        id: 5,
+        loc: [60.1696227,24.9411063],
+        name: `Döner Harju`,
+        type: ['kebab']
     },
 ];
 

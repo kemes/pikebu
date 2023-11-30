@@ -18,6 +18,11 @@
                         <l-popup>
                             {{ marker.name }}
                         </l-popup>
+                        <l-icon
+                            :icon-anchor=[16,40]
+                            :popup-anchor="[0,-40]"
+                            :icon-url="getIcon(marker)" >
+                        </l-icon>
                     </l-marker>
                     <!-- Temporary marker -->
                     <l-marker
@@ -27,8 +32,9 @@
                             Temp Marker.
                         </l-popup>
                         <l-icon
-                            :icon-anchor="[15,15]"
-                            icon-url="./assets/red_dot.svg">
+                            :icon-anchor="[16,40]"
+                            :popup-anchor="[0,-40]"
+                            icon-url="./assets/pin_temp.svg" >
                         </l-icon>
                     </l-marker>
                 </l-map>
@@ -92,6 +98,29 @@ function addNewRestaurant() {
 
 function addTempMarker(e){
     coord.value = [e.latlng.lat, e.latlng.lng];
+}
+
+function getIcon(marker) {
+    var icon_url = '';
+
+    if(marker.type.length > 1) {
+        icon_url = `./assets/pin_multi.svg`;
+    } else {
+        switch(marker.type[0]){
+            case 'pizza':
+                icon_url = `./assets/pin_pizza.svg`;
+                break;
+            case 'burger':
+                icon_url = `./assets/pin_burger.svg`;
+                break;
+            case 'kebab':
+                icon_url = `./assets/pin_kebab.svg`;
+                break;
+
+        }
+    }
+    
+    return icon_url;
 }
 
 </script>
