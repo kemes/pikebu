@@ -54,7 +54,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, ref } from 'vue';
 import "leaflet/dist/leaflet.css";
 import {LMap, LTileLayer, LMarker, LPopup} from "@vue-leaflet/vue-leaflet";
 
@@ -69,14 +69,6 @@ const checkedTypes = ref([]);
 const zoom = 9;
 
 const emit = defineEmits('marker-add');
-
-onMounted(() => {
-//     this.$nextTick(()=>{
-//     let self = this
-//     console.log(self.$refs) // Shows the mapRef object reference
-//     console.log(self.$refs.mapRef) // returns undefined ???
-//   });
-});
 
 function addNewRestaurant() {
     const newMarker =
@@ -96,29 +88,6 @@ function addNewRestaurant() {
 
 function addTempMarker(e){
     coord.value = [e.latlng.lat, e.latlng.lng];
-    console.log('Markers::' + JSON.stringify(props.markers));
 }
-
-// function mappi(){
-//     this.map = this.$refs.map.mapObject;
-//     console.log(this.map);
-
-// }
-
-// function addMarker(e){
-//     const markerLoc = e.latlng.lat + ', ' + e.latlng.lng; 
-//     return markerLoc;
-// }
-
-
-
-
-//TODO: Show existing markers on map when loaded for the fist time
-
-// function getExistingMarkers(){
-//     const temp = props.markers;
-//     return temp;
-// }
-
 
 </script>
