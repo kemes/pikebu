@@ -18,10 +18,9 @@
     "leaflet": "^1.9.4",
     "sass": "^1.69.5",
     "vite": "^4.5.0",
-    "vue": "^3.3.8"
+    "vue": "^3.3.9"
   },
   "dependencies": {
-    "@vue-leaflet/vue-leaflet": "^0.10.1",
-    "vue-leaflet": "^0.1.0"
+    "@vue-leaflet/vue-leaflet": "^0.10.1"
   }
 }
