@@ -31,7 +31,7 @@ const markers = [
 
 function receiceNewMarker(resdata) {
     resdata.id=markers.length+1;
-    markers.unshift(resdata);
+    markers.push(resdata);
     console.log(JSON.stringify(markers));
 
 }

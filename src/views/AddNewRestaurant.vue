@@ -21,8 +21,8 @@
                     </l-marker>
                     <!-- Temporary marker -->
                     <l-marker
-                        ref="tempMarker"
-                        :lat-lng="coord.loc">
+                        v-if="coord.length != 0"
+                        :lat-lng="coord">
                         <l-popup>
                             Temp Marker.
                         </l-popup>
@@ -33,7 +33,7 @@
             <form @submit.prevent="addNewRestaurant()">
 
                 <label class="px-2 py-2 text-uppercase" for="coord">Koordinaatit </label><br />
-                <span>{{ coord.loc }}</span><br />
+                <span>{{ coord }}</span><br />
                 <!-- <input type="text" v-model="coord" id="coord" placeholder="Ei asetettu"  style="width: 100%;"/><br /> -->
 
                 <label class="px-2 py-2 text-uppercase" for="name">Nimi </label><br />
@@ -85,19 +85,18 @@ function addNewRestaurant() {
             name: name.value,
             type: checkedTypes.value
         };
-    //TODO: Emit new marker to parent
+
     emit('marker-add', newMarker);
-        // console.log(props.markers);
-    //Add marker to local storage
-    // const newValues = localStorage.getItem('markers') + coord;
-    // localStorage.setItem('markers_new', JSON.stringify(newValues));
-    
+
+    //Empty values
+    coord.value = [];
+    name.value = '';
+    checkedTypes.value = [];
 }
 
 function addTempMarker(e){
-    coord.value = {};
-    const combined = [e.latlng.lat, e.latlng.lng];
-    coord.value.loc  = combined;
+    coord.value = [e.latlng.lat, e.latlng.lng];
+    console.log('Markers::' + JSON.stringify(props.markers));
 }
 
 // function mappi(){
