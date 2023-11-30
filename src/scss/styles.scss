@@ -1,6 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
 
+$pikebu-green: #9BDEAC;
+
 #map {
     height: 350px;
     width: 100%;
+}
+
+.navbar-bg-color {
+    background: $pikebu-green;
 }

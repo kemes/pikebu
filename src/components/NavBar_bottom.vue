@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="navbar fixed-bottom navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar fixed-bottom navbar-expand-lg navbar-bg-color">
             <div class="container-fluid mx-auto">
                 <div class="text-center">
                     <img class="py-1 px-4" src="../assets/list.svg" alt="feed_icon" @click="clicked"><br />

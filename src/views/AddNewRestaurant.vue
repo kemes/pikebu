@@ -26,6 +26,10 @@
                         <l-popup>
                             Temp Marker.
                         </l-popup>
+                        <l-icon
+                            :icon-anchor="[15,15]"
+                            icon-url="./assets/red_dot.svg">
+                        </l-icon>
                     </l-marker>
                 </l-map>
             </div>
@@ -56,7 +60,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import "leaflet/dist/leaflet.css";
-import {LMap, LTileLayer, LMarker, LPopup} from "@vue-leaflet/vue-leaflet";
+import {LMap, LTileLayer, LMarker, LPopup, LIcon} from "@vue-leaflet/vue-leaflet";
 
 const props = defineProps({
     markers: Object
