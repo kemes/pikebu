@@ -39,7 +39,7 @@
                     </l-marker>
                 </l-map>
             </div>
-            
+            {{ props.markers[0].loc }}
             <form @submit.prevent="addNewRestaurant()">
 
                 <label class="px-2 py-2 text-uppercase" for="coord">Koordinaatit </label><br />
@@ -64,7 +64,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import "leaflet/dist/leaflet.css";
 import {LMap, LTileLayer, LMarker, LPopup, LIcon} from "@vue-leaflet/vue-leaflet";
 
@@ -72,11 +72,15 @@ const props = defineProps({
     markers: Object
 });
 
+console.log(props.markers)
+
 let name = ref('');
 let coord = ref([]);
-let center = ref([60.3112373549543, 25.38869619369507]);
+let center = ref([]);
 const checkedTypes = ref([]);
 const zoom = 9;
+
+// getBrowserLocation();
 
 const emit = defineEmits('marker-add');
 
@@ -116,11 +120,17 @@ function getIcon(marker) {
             case 'kebab':
                 icon_url = `./assets/pin_kebab.svg`;
                 break;
-
         }
     }
-    
+
     return icon_url;
 }
+
+// async function getBrowserLocation(){
+//     var location = await navigator.geolocation.getCurrentPosition((position) => {
+//         location = [position.coords.latitude, position.coords.longitude];
+//     });
+//     center = location;
+// }
 
 </script>
