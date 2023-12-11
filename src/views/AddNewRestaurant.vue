@@ -39,7 +39,6 @@
                     </l-marker>
                 </l-map>
             </div>
-            {{ props.markers[0].loc }}
             <form @submit.prevent="addNewRestaurant()">
 
                 <label class="px-2 py-2 text-uppercase" for="coord">Koordinaatit </label><br />
@@ -72,13 +71,16 @@ const props = defineProps({
     markers: Object
 });
 
-console.log(props.markers)
+// console.log(props.markers)
 
 let name = ref('');
 let coord = ref([]);
-let center = ref([]);
+//TODO: Replace fixed center with browser location
+let center = ref([60.3112373549543, 25.38869619369507]);
 const checkedTypes = ref([]);
 const zoom = 9;
+
+
 
 // getBrowserLocation();
 
