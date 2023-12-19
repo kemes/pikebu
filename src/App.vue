@@ -26,18 +26,19 @@ async function getRestaurants(){
         return {
             id: row.id,
             name: row.name,
-            loc: row.loc.split(', ').map(coord => parseFloat(coord)),
+            loc: row.loc.split(',').map(coord => parseFloat(coord)),
             type: row.type.split(',')
         }
     })
     return result
 }
 
-function receiceNewMarker(resdata) {
-    //TODO: Insert received marker into DB
-    resdata.id=markers.length+1
-    markers.value.push(resdata)
-    console.log(JSON.stringify(markers))
+async function receiceNewMarker(resdata) {
+    await fetch('http://localhost:3000/restaurants', {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(resdata)
+    })
 }
 
 </script>
