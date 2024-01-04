@@ -66,6 +66,8 @@
 import { ref } from 'vue';
 import "leaflet/dist/leaflet.css";
 import {LMap, LTileLayer, LMarker, LPopup, LIcon} from "@vue-leaflet/vue-leaflet";
+import { toast } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
 
 const props = defineProps({
     markers: Object
@@ -87,6 +89,18 @@ const zoom = 9;
 const emit = defineEmits('marker-add');
 
 function addNewRestaurant() {
+    if (name.value.length < 3 || checkedTypes.value.length == 0 || coord.value.length == 0){
+        toast.error("Tietoja puuttuu!",{
+            theme: 'colored',
+            autoClose: 1000
+        })
+        return
+    }
+
+    toast.success("Ravintola lisätty.", {
+        theme: 'colored',
+        autoClose: 1000
+    })
     const newMarker =
         {
             loc: coord.value,
