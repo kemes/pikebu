@@ -44,6 +44,7 @@
                 <label class="px-2 py-2 text-uppercase" for="coord">Koordinaatit </label><br />
                 <span>{{ coord }}</span><br />
                 <!-- <input type="text" v-model="coord" id="coord" placeholder="Ei asetettu"  style="width: 100%;"/><br /> -->
+                <button type="button" class="btn btn-secondary px-5" name="getCoords" @click="getCurrentLocation()">Hae sijainti</button><br />
 
                 <label class="px-2 py-2 text-uppercase" for="name">Nimi </label><br />
                 <input type="text" v-model="name" placeholder="Ravintolan nimi" /><br />
@@ -80,11 +81,8 @@ let coord = ref([]);
 //TODO: Replace fixed center with browser location
 let center = ref([60.3112373549543, 25.38869619369507]);
 const checkedTypes = ref([]);
-const zoom = 9;
-
-
-
-// getBrowserLocation();
+//TODO: Replace default zoom level with bound(?) which frames all current markers.
+let zoom = ref(9);
 
 const emit = defineEmits('marker-add');
 
@@ -142,11 +140,19 @@ function getIcon(marker) {
     return icon_url;
 }
 
-// async function getBrowserLocation(){
-//     var location = await navigator.geolocation.getCurrentPosition((position) => {
-//         location = [position.coords.latitude, position.coords.longitude];
-//     });
-//     center = location;
-// }
+async function getCurrentLocation(){
+    if ("geolocation" in navigator){
+        var location = await navigator.geolocation.getCurrentPosition((position) => {
+            location = [position.coords.latitude, position.coords.longitude];
+            coord.value = location;
+            center.value = location;
+            setTimeout(()=>{
+                zoom.value = 12;
+            }, 250);
+        });
+    } else {
+        console.log("Geoloc not available.")
+    }
+}
 
 </script>
